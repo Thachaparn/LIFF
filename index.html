@@ -42,7 +42,8 @@
     console.log("Hello World!")
   </script> -->
 
-  <!-- <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script> -->
+  <!--sdk of LIFF uploaded--> 
+  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script> -->
   <script>
     function createUniversalLink() {
     }
@@ -73,14 +74,29 @@
 
     async function getUserProfile() {
     }
-
+    // ดึงค่า Language, version, isInClient, AccessToken มาแสดง
     function getEnvironment() {
+      document.getElementById("os").append(liff.getOS()) // liff เปิดใน android, ios หรือ web
+      document.getElementById("language").append(liff.getLanguage()) // defualt language ของ client
+      document.getElementById("version").append(liff.getVersion()) // version ของ liff ที่ถูกเปิด
+      document.getElementById("accessToken").append(liff.getAccessToken()) // อันนี้เป็นค่าชั่วคราว เพื่อให้เรา access ไปที่หลังบ้านของ LINE ได้ 
+      document.getElementById("isInClient").append(liff.isInClient()) // ผู้ใช้เปิด liff จาก LINE หรือ External browser --> จะได้ซ่อน feature แล้วแต่แพล็ตฟอร์มที่เปิดได้
+      if (liff.isInClient()) {
+        document.getElementById("btnLogOut").style.display = "none" // คำสั่ง liff.init ถ้าเปิดจากแอพ line  มันจะ log in ให้อยู่แล้ว เลยไม่จำเป็นต้องมี
+      } else {
+        // 3 ปุ่มนี้ทำไม่ได้ถ้าเปิดจาก external browser
+        document.getElementById("btnMsg").style.display = "none"
+        document.getElementById("btnScanCode").style.display = "none"
+        document.getElementById("btnClose").style.display = "none"
+      }
     }
 
     async function main() {
-      alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "YOUR-LIFF-ID" })
-      // getEnvironment()
+      // alert("LINE Developers x Skooldio") # deleted the promt box when opening the link
+      
+      // จุดเริ่มต้มของฟังก์ชั่น LIFF ต้องทำการ init โดยมี LIFF-ID เป็น parameter ซึ่งสามารถหามาจาก LIFF url: https://liff.line.me/{LIFF-ID}
+      await liff.init({ liffId: "1654179466-rMD7nq2x" })
+      getEnvironment()
       // getUserProfile()
       // getContext()
       // getFriendship()
