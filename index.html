@@ -64,6 +64,15 @@
     }
 
     async function getFriendship() {
+      const friend = await liff.getFriendship()
+      // TRUE/FALSE - เป็นเพื่อนกับบอทยัง
+      document.getElementById("friendship").append(friend.friendFlag)
+      if (!friend.friendFlag) {
+        if (confirm("you're not in this bot's friend list. Wanna add friend now?")) {
+          // redirect to the page where user can add chatbot to friend list
+          window.location = "https://line.me/R/ti/p/@699hbyvu"
+        }
+      }
     }
  
     async function sendMsg() {
@@ -129,11 +138,11 @@
       // alert("LINE Developers x Skooldio") # deleted the promt box when opening the link
       
       // จุดเริ่มต้มของฟังก์ชั่น LIFF ต้องทำการ init โดยมี LIFF-ID เป็น parameter ซึ่งสามารถหามาจาก LIFF url: https://liff.line.me/{LIFF-ID}
-      await liff.init({ liffId: "1654184913-Rv6kY7JK" })
+      await liff.init({ liffId: "1654179466-rMD7nq2x" })
       getEnvironment()
       getUserProfile()
       getContext()
-      // getFriendship()
+      getFriendship()
       // createUniversalLink()
     }
     main()
