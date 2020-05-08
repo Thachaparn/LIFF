@@ -53,6 +53,12 @@
     }
 
     async function shareMsg() {
+      await liff.shareTargetPicker([
+        {
+          "type":"text",
+          "text":"This message was sent by ShareTargetPicker."
+        }
+      ])
     }
 
     function logOut() {
@@ -90,7 +96,7 @@
       // TRUE/FALSE - เป็นเพื่อนกับบอทยัง
       document.getElementById("friendship").append(friend.friendFlag)
       if (!friend.friendFlag) {
-        if (confirm("you're not in this bot's friend list. Wanna add friend now?")) {
+        if (confirm("you're not in bot's friend list. Wanna add friend now?")) {
           // redirect to the url where user can add chatbot to friend list "https://line.me/R/ti/p/{bot-id}"
           // pro: ช่วยให้เราทำกิจกรรมการขายได้ครบวงจรมากขึ้น เช่น เปิด liff สั่งซื้อสินค้าใน liff แล้วอยากจะส่งใบเสร็จเข้าห้องแชท user ก็จะต้องเป็นเพื่อนกับเรา (bot) ก่อน เราถึงจะส่งข้อความเข้าห้องแชทให้เขาได้
           window.location = "https://line.me/R/ti/p/@699hbyvu"
