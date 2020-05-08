@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
   <title>Path</title>
-  <link rel="stylesheet" href="css/style.css" media="all">
+  <link rel="stylesheet" href="../css/style.css" media="all">
 </head>
 
 <body>
@@ -15,6 +15,8 @@
   <p id="displayName"><b>displayName:</b> </p>
   <p id="statusMessage"><b>statusMessage:</b> </p>
   <p id="decodedIDToken"><b>email:</b> </p>
+  <p><a href="https://thachaparn.github.io/liff/path/">Back to Home</a></p>
+
 
   <script>
     // Query Params
@@ -40,7 +42,9 @@
       if (liff.isLoggedIn()) { // open via LINE
         getUserProfile()
       } else { // open via external browser
-        liff.login({redirectUri: "https://thachaparn.github.io/liff/path"})
+        liff.login() // พอ login ในหน้า */liff/path/index.html มันจะ redirect กลับไปที่หน้า */liff/index.html
+        // ดังนั้น ต้องใส่พารามิเตอร์ redirectUri เพื่อให้ redirect ไปหน้าที่เราต้องการ ซึ่งในที่นี้ก็คือหน้า */liff/path/index.html หน้าเดิม
+        // liff.login({redirectUri: "https://thachaparn.github.io/liff/path"}) // = callback URL
       }
     }
     main()
