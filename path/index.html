@@ -15,7 +15,7 @@
   <p id="displayName"><b>displayName:</b> </p>
   <p id="statusMessage"><b>statusMessage:</b> </p>
   <p id="decodedIDToken"><b>email:</b> </p>
-  <p><a href="https://thachaparn.github.io/liff/path/">Back to Home</a></p>
+  <p><a href="https://thachaparn.github.io/liff/">Back Home</a></p>
 
 
   <script>
@@ -42,9 +42,9 @@
       if (liff.isLoggedIn()) { // open via LINE
         getUserProfile()
       } else { // open via external browser
-        liff.login() // พอ login ในหน้า */liff/path/index.html มันจะ redirect กลับไปที่หน้า */liff/index.html
+        // liff.login() // พอ login ในหน้า */liff/path/index.html มันจะ redirect กลับไปที่หน้า */liff/index.html
         // ดังนั้น ต้องใส่พารามิเตอร์ redirectUri เพื่อให้ redirect ไปหน้าที่เราต้องการ ซึ่งในที่นี้ก็คือหน้า */liff/path/index.html หน้าเดิม
-        // liff.login({redirectUri: "https://thachaparn.github.io/liff/path"}) // = callback URL
+        liff.login({redirectUri: "https://thachaparn.github.io/liff/path"}) // = callback URL
       }
     }
     main()
