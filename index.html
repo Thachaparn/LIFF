@@ -59,7 +59,11 @@
 
     async function scanCode() {
       const result = await liff.scanCode() // เปิด qr code reader เพื่ออ่านค่ากลับมา
-      document.getElementById("scanCode").append(result.value)
+      // document.getElementById("scanCode").append(result.value)
+      liff.openWindow({
+        url: result.value,
+        external: false
+      })
     }
     
     // open browser in 2 ways: in-app and external
