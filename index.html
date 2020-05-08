@@ -71,8 +71,13 @@
 
     function getContext() {
     }
-
+    // พวก async หรือ await - ใช้สำหรับพวกข้อมูลที่ต้องรอแปปนึง ถึงจะดึงมาได้
     async function getUserProfile() {
+      const profile = await liff.getProfile()
+      document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("userId").append(profile.userId)
+      document.getElementById("statusMessage").append(profile.statusMessage)
+      document.getElementById("displayName").append(profile.displayName)
     }
     // ดึงค่า Language, version, isInClient, AccessToken มาแสดง
     function getEnvironment() {
@@ -82,9 +87,10 @@
       document.getElementById("accessToken").append(liff.getAccessToken()) // อันนี้เป็นค่าชั่วคราว เพื่อให้เรา access ไปที่หลังบ้านของ LINE ได้ 
       document.getElementById("isInClient").append(liff.isInClient()) // ผู้ใช้เปิด liff จาก LINE หรือ External browser --> จะได้ซ่อน feature แล้วแต่แพล็ตฟอร์มที่เปิดได้
       if (liff.isInClient()) {
-        document.getElementById("btnLogOut").style.display = "none" // คำสั่ง liff.init ถ้าเปิดจากแอพ line  มันจะ log in ให้อยู่แล้ว เลยไม่จำเป็นต้องมี
+      // TRUE - คำสั่ง liff.init ถ้าเปิดจากแอพ line  มันจะ log in ให้อยู่แล้ว เลยไม่จำเป็นต้องมีปุ่ม log out
+      document.getElementById("btnLogOut").style.display = "none" 
       } else {
-        // 3 ปุ่มนี้ทำไม่ได้ถ้าเปิดจาก external browser
+        // FALSE - 3 ปุ่มนี้ทำไม่ได้ถ้าเปิดจาก external browser
         document.getElementById("btnMsg").style.display = "none"
         document.getElementById("btnScanCode").style.display = "none"
         document.getElementById("btnClose").style.display = "none"
@@ -97,7 +103,7 @@
       // จุดเริ่มต้มของฟังก์ชั่น LIFF ต้องทำการ init โดยมี LIFF-ID เป็น parameter ซึ่งสามารถหามาจาก LIFF url: https://liff.line.me/{LIFF-ID}
       await liff.init({ liffId: "1654179466-rMD7nq2x" })
       getEnvironment()
-      // getUserProfile()
+      getUserProfile()
       // getContext()
       // getFriendship()
       // createUniversalLink()
