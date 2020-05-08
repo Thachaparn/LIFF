@@ -59,8 +59,13 @@
 
     async function scanCode() {
     }
-
+    
+    // open browser in 2 ways: in-app and external
     function openWindow() {
+      liff.openWindow({
+        url: "https://line.me",
+        external: true
+      })
     }
 
     async function getFriendship() {
@@ -69,7 +74,7 @@
       document.getElementById("friendship").append(friend.friendFlag)
       if (!friend.friendFlag) {
         if (confirm("you're not in this bot's friend list. Wanna add friend now?")) {
-          // redirect to the page where user can add chatbot to friend list
+          // redirect to the url where user can add chatbot to friend list "https://line.me/R/ti/p/{bot-id}"
           window.location = "https://line.me/R/ti/p/@699hbyvu"
         }
       }
