@@ -19,7 +19,7 @@
   <p id="decodedIDToken"><b>email:</b> </p>
   <p id="type"><b>type:</b> </p>
   <p id="viewType"><b>viewType:</b> </p>
-  <p id="userId"><b>userId:</b></p>
+  <p class="userId"><b>userId:</b></p>
   <p id="utouId"><b>utouId:</b> </p>
   <p id="roomId"><b>roomId:</b> </p>
   <p id="groupId"><b>groupId:</b> </p>
@@ -83,7 +83,7 @@
       // for group chat where liff was opened
       document.getElementById("groupId").append(liff.getContext().groupId)    
       
-      document.getElementById("userId").append(liff.getContext().userId)    
+      document.getElementsByClassName("userId").append(liff.getContext().userId)    
 
     }
     // พวก async หรือ await - ใช้สำหรับพวกข้อมูลที่ต้องรอแปปนึง ถึงจะดึงมาได้
