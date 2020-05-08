@@ -19,7 +19,6 @@
   <p id="decodedIDToken"><b>email:</b> </p>
   <p id="type"><b>type:</b> </p>
   <p id="viewType"><b>viewType:</b> </p>
-  <p id="userId2"><b>userId-context:</b></p>
   <p id="utouId"><b>utouId:</b> </p>
   <p id="roomId"><b>roomId:</b> </p>
   <p id="groupId"><b>groupId:</b> </p>
@@ -84,7 +83,7 @@
 
     // ทราบบริบทการเปิด liff ว่าเปิดที่ไหน ในกรุ๊ป หรือห้องแชท เพื่อพิจารณาการส่งข้อความของเราได้
     function getContext() {
-      // 1-on-1, group, room, none(external browser)
+      // utou (1-on-1 chat), group, room, none(external browser)
       document.getElementById("type").append(liff.getContext().type)
       // compact, tall, full size
       document.getElementById("viewType").append(liff.getContext().viewType)
@@ -93,10 +92,7 @@
       // for room chat where liff was opened
       document.getElementById("roomId").append(liff.getContext().roomId)    
       // for group chat where liff was opened
-      document.getElementById("groupId").append(liff.getContext().groupId)    
-      
-      document.getElementById("userId2").append(liff.getContext().userId)    
-
+      document.getElementById("groupId").append(liff.getContext().groupId)
     }
     // พวก async หรือ await - ใช้สำหรับพวกข้อมูลที่ต้องรอแปปนึง ถึงจะดึงมาได้
     async function getUserProfile() {
