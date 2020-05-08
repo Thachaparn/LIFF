@@ -56,8 +56,8 @@
     }
 
     function logOut() {
-      liff.logout()
-      // window.location.reload()
+      liff.logout() // พอกดปุ่มแล้วมันก็จะ log out เลย แต่ไม่เกิดการเปลี่ยนแปลงอะไรตรงหน้า UI เลย
+      window.location.reload() // เปิดหน้า window ใหม่อีกรอบ จะได้ไป start ใหม่และเห็นว่า log out แล้ว
     }
 
     // ปิด liff อัตโนมัติ ---> terminate temporary access token mentioned in getEnviroment()
