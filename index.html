@@ -19,6 +19,7 @@
   <p id="decodedIDToken"><b>email:</b> </p>
   <p id="type"><b>type:</b> </p>
   <p id="viewType"><b>viewType:</b> </p>
+  <p id="userId"><b>userId:</b></p>
   <p id="utouId"><b>utouId:</b> </p>
   <p id="roomId"><b>roomId:</b> </p>
   <p id="groupId"><b>groupId:</b> </p>
@@ -65,9 +66,10 @@
 
     async function getFriendship() {
     }
-
+ 
     async function sendMsg() {
     }
+
     // ทราบบริบทการเปิด liff ว่าเปิดที่ไหน ในกรุ๊ป หรือห้องแชท เพื่อพิจารณาการส่งข้อความของเราได้
     function getContext() {
       // 1-on-1, group, room, none(external browser)
@@ -80,6 +82,8 @@
       document.getElementById("roomId").append(liff.getContext().roomId)    
       // for group chat where liff was opened
       document.getElementById("groupId").append(liff.getContext().groupId)    
+      
+      document.getElementById("userId").append(liff.getContext().userId)    
 
     }
     // พวก async หรือ await - ใช้สำหรับพวกข้อมูลที่ต้องรอแปปนึง ถึงจะดึงมาได้
@@ -92,6 +96,7 @@
       // (not apply consent on console panel yet) email เป็นค่าที่อยู่ใน openId เลยต้องไปตั้งค่า scope ใน console ด้วย
       // document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
+
     // ดึงค่า Language, version, isInClient, AccessToken มาแสดง
     function getEnvironment() {
       document.getElementById("os").append(liff.getOS()) // liff เปิดใน android, ios หรือ web
