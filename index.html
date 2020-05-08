@@ -67,9 +67,11 @@
     }
  
     async function sendMsg() {
-      // ต้องเช็คก่อนว่ามันเป็นห้องแชทซักประเภทนึง ถึงจะส่งได้
+      // ต้องเช็คก่อนว่ามันเป็นห้องแชทซักประเภทนึง ถึงจะส่งข้อความไปหาได้
+      // client = maessage sender ,not the counterpart
       if (liff.getContext().type !== "none") {
         await liff.sendMessagges([
+          // 1 push message can have 5 bubles at most
           {
             "type": "sticker",
             "stickerId": 1,
@@ -127,7 +129,7 @@
       // alert("LINE Developers x Skooldio") # deleted the promt box when opening the link
       
       // จุดเริ่มต้มของฟังก์ชั่น LIFF ต้องทำการ init โดยมี LIFF-ID เป็น parameter ซึ่งสามารถหามาจาก LIFF url: https://liff.line.me/{LIFF-ID}
-      await liff.init({ liffId: "1654179466-rMD7nq2x" })
+      await liff.init({ liffId: "1654184913-Rv6kY7JK" })
       getEnvironment()
       getUserProfile()
       getContext()
