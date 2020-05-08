@@ -31,8 +31,8 @@
       document.getElementById("userId").append(profile.userId)
       document.getElementById("statusMessage").append(profile.statusMessage)
       document.getElementById("displayName").append(profile.displayName)
-      // (not apply consent on console panel yet) email เป็นค่าที่อยู่ใน openId เลยต้องไปตั้งค่า scope ใน console ด้วย
-      // document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+      // email เป็นค่าที่อยู่ใน openId เลยต้องไปตั้งค่า scope ใน console ด้วย
+      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
     async function main() {      
       await liff.init({ liffId: "1654179466-rMD7nq2x" })
