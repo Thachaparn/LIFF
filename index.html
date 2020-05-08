@@ -68,16 +68,29 @@
 
     async function sendMsg() {
     }
-
+    // ทราบบริบทการเปิด liff ว่าเปิดที่ไหน ในกรุ๊ป หรือห้องแชท เพื่อพิจารณาการส่งข้อความของเราได้
     function getContext() {
+      // 1-on-1, group, room, none(external browser)
+      document.getElementById("type").append(liff.getContext().type)
+      // compact, tall, full size
+      document.getElementById("viewType").append(liff.getContext().viewType)
+      // for 1-on-1 chat where liff was opened
+      document.getElementById("utouId").append(liff.getContext().utouId)
+      // for room chat where liff was opened
+      document.getElementById("roomId").append(liff.getContext().roomId)    
+      // for group chat where liff was opened
+      document.getElementById("groupId").append(liff.getContext().groupId)    
+
     }
     // พวก async หรือ await - ใช้สำหรับพวกข้อมูลที่ต้องรอแปปนึง ถึงจะดึงมาได้
     async function getUserProfile() {
       const profile = await liff.getProfile()
-      document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("pictureUrl").src = profile.pictureUrl // เอา url property ของ profile ไปใส่เป็นค่าของ src ใน img tag
       document.getElementById("userId").append(profile.userId)
       document.getElementById("statusMessage").append(profile.statusMessage)
       document.getElementById("displayName").append(profile.displayName)
+      // (not apply consent on console panel yet) email เป็นค่าที่อยู่ใน openId เลยต้องไปตั้งค่า scope ใน console ด้วย
+      // document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
     // ดึงค่า Language, version, isInClient, AccessToken มาแสดง
     function getEnvironment() {
@@ -104,7 +117,7 @@
       await liff.init({ liffId: "1654179466-rMD7nq2x" })
       getEnvironment()
       getUserProfile()
-      // getContext()
+      getContext()
       // getFriendship()
       // createUniversalLink()
     }
