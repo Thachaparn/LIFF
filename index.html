@@ -68,6 +68,18 @@
     }
  
     async function sendMsg() {
+      // ต้องเช็คก่อนว่ามันเป็นห้องแชทซักประเภทนึง ถึงจะส่งได้
+      if (liff.getContext().type !== "none") {
+        await liff.sendMessagges([
+          {
+            "type": "sticker",
+            "stickerId": 1,
+            "packageId": 1
+          }
+        ])
+        alert("Message sent")
+      }
+
     }
 
     // ทราบบริบทการเปิด liff ว่าเปิดที่ไหน ในกรุ๊ป หรือห้องแชท เพื่อพิจารณาการส่งข้อความของเราได้
