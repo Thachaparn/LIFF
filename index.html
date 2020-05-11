@@ -58,7 +58,7 @@
   updated 2020-may-08; liff sdk has been updated 
   from */edge/2.1/ 
     to */edge/2/ (auto-update path) 
-    or */edge/2.1.13/ (manually update full path) --- error when version changed  --> 
+    or */edge/versions/2.1.13/ (manually update full path) --- error when version changed  --> 
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
   <script>
     function createUniversalLink() {
@@ -118,10 +118,10 @@
  
     async function sendMsg() {
       // ต้องเช็คก่อนว่ามันเป็นห้องแชทซักประเภทนึง ถึงจะส่งข้อความไปหาได้
-      // client = maessage sender ,not the counterpart
+      // client = message sender ,not the counterpart
       if (liff.getContext().type !== "none") {
         await liff.sendMessages([
-          // 1 push message can have 5 bubles at most
+          // 1 push message can have 5 bubles at maximum
           {
             "type": "sticker",
             "stickerId": 1,
@@ -133,7 +133,7 @@
 
     }
 
-    // ทราบบริบทการเปิด liff ว่าเปิดที่ไหน ในกรุ๊ป หรือห้องแชท เพื่อพิจารณาการส่งข้อความของเราได้
+    // ทราบบริบทการเปิด liff ว่าเปิดที่ไหน ในกรุ๊ป หรือห้องแชท 1-on-1 เพื่อพิจารณาการส่งข้อความของเราได้
     function getContext() {
       // utou (1-on-1 chat), group, room, none(external browser)
       document.getElementById("type").append(liff.getContext().type)
@@ -169,7 +169,7 @@
       document.getElementById("btnLogOut").style.display = "none" 
       } else {
         // FALSE - 3 ปุ่มนี้ทำไม่ได้ถ้าเปิดจาก external browser
-        document.getElementById("btnMsg").style.display = "none"
+        // document.getElementById("btnMsg").style.display = "none"
         document.getElementById("btnScanCode").style.display = "none"
         document.getElementById("btnClose").style.display = "none"
       }
