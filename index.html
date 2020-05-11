@@ -181,14 +181,14 @@
       // check if user already log in yet
       liff.ready.then(() => {
         document.getElementById("isLoggedIn").append(liff.isLoggedIn())
-        // if (liff.isLoggedIn()) {
-        getEnvironment()
-        getUserProfile()
-        getContext()
-        getFriendship()
-        // } // else {
-          // liff.login()
-        // }
+        if (liff.isLoggedIn()) {
+          getEnvironment()
+          getUserProfile()
+          getContext()
+          getFriendship()
+        } else {
+          liff.login()
+        }
       })
 
       // จุดเริ่มต้มของฟังก์ชั่น LIFF ต้องทำการ init โดยมี LIFF-ID เป็น parameter ซึ่งสามารถหามาจาก LIFF url: https://liff.line.me/{LIFF-ID}
