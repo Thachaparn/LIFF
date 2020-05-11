@@ -99,7 +99,7 @@
     function openWindow() {
       liff.openWindow({
         url: "https://line.me",
-        external: true
+        external: false
       })
     }
 
@@ -169,7 +169,7 @@
       document.getElementById("btnLogOut").style.display = "none" 
       } else {
         // FALSE - 3 ปุ่มนี้ทำไม่ได้ถ้าเปิดจาก external browser
-        // document.getElementById("btnMsg").style.display = "none"
+        document.getElementById("btnMsg").style.display = "none"
         document.getElementById("btnScanCode").style.display = "none"
         document.getElementById("btnClose").style.display = "none"
       }
