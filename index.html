@@ -181,12 +181,12 @@
       // check if user already log in yet
       liff.ready.then(() => {
         document.getElementById("isLoggedIn").append(liff.isLoggedIn())
-        if (liff.isLoggedIn()) {
-          getEnvironment()
-          getUserProfile()
-          getContext()
-          getFriendship()
-        } // else {
+        // if (liff.isLoggedIn()) {
+        getEnvironment()
+        getUserProfile()
+        getContext()
+        getFriendship()
+        // } // else {
           // liff.login()
         // }
       })
